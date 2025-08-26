@@ -1,0 +1,32 @@
+{
+  "name": "credit-score-lite-api",
+  "version": "1.0.0",
+  "description": "A lightweight Credit Risk (Credit Score Lite) API for fintechs and lenders.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "credit",
+    "score",
+    "fintech",
+    "risk",
+    "api",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
