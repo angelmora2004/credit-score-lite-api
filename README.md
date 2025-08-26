@@ -27,7 +27,11 @@ npm run dev
 
 3. Health check
 
-- GET http://localhost:3000/health
+- GET /health
+
+4. Root info
+
+- GET /
 
 ## API Endpoints
 

@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const pkg = require('../package.json');
 const morgan = require('morgan');
 const cors = require('cors');
 
@@ -18,6 +19,27 @@ app.use(morgan('dev'));
 // Health
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'credit-score-lite-api', timestamp: new Date().toISOString() });
+});
+
+// Root info
+app.get('/', (req, res) => {
+  res.json({
+    service: 'credit-score-lite-api',
+    version: pkg.version,
+    description: 'Lightweight API to estimate credit risk, explain factors, and expose aggregate benchmarks.',
+    endpoints: [
+      { method: 'GET', path: '/', description: 'Service info and endpoints list' },
+      { method: 'GET', path: '/health', description: 'Health check' },
+      { method: 'POST', path: '/credit-score', description: 'Calculate credit score and risk' },
+      { method: 'POST', path: '/risk-factors', description: 'Explain risk factors for a given applicant' },
+      { method: 'GET', path: '/benchmarks', description: 'Aggregated benchmarks from stored records' },
+      { method: 'GET', path: '/benchmarks/{country}', description: 'Benchmarks filtered by country code' },
+      { method: 'GET', path: '/records', description: 'List recent anonymized scoring records' },
+      { method: 'GET', path: '/records/{country}', description: 'List records filtered by country' }
+    ],
+    docs: 'See README.md in the repository',
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Routes
